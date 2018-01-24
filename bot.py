@@ -14,15 +14,20 @@ auth.set_access_token(A_TOKEN, A_SECRET)
 
 api = tweepy.API(auth) 
 
-with open('lotr.txt') as f:
-    text = f.read()
+def gen_textmodel():
+    with open('lotr.txt') as f:
+        text = f.read()
+    model = markovify.Text(text)
+    return model
 
-text_model = markovify.Text(text)
+def construct_twt(text_model):
+    markov_text = text_model.make_short_sentence(140)
+    if '`' or '"' not in text_model:
+        twt_txt = '[icybot] https://github.com/icyphox/icybot \n' + markov_text
+    return twt_txt
 
-
-def construct_twt():
-        markov_text = text_model.make_short_sentence(140)
-        if '`' or '"' not in text_model:
-            twt_txt = '[icybot] https://github.com/icyphox/icybot \n' + markov_text
-        return twt_txt
+def do_tweet(text):
+    api.update_status(text)
+    time.sleep(1800)
+    
 
