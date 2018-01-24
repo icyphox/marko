@@ -12,7 +12,10 @@ auth.set_access_token(A_TOKEN, A_SECRET)
 
 api = tweepy.API(auth) 
 
-with open('topkek.txt') as f:
-    for line in f:
-        twt_txt = '[icybot] https://github.com/icyphox/icybot\n' + line
-        print(twt_txt)
+def do_tweet():
+    with open('topkek.txt') as f:
+        for line in f:
+            twt_txt = '[icybot] https://github.com/icyphox/icybot\n --- \n' + line 
+            print(twt_txt)
+
+do_tweet()
