@@ -35,6 +35,6 @@ def main():
     tweet_text = construct_twt(model)
     do_tweet(tweet_text) 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
     
