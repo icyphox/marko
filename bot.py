@@ -30,4 +30,11 @@ def do_tweet(text):
     api.update_status(text)
     time.sleep(1800)
     
+def main():
+    model = gen_textmodel()
+    tweet_text = construct_twt(model)
+    do_tweet(tweet_text) 
 
+if __name__ = "__main__":
+    main()
+    
