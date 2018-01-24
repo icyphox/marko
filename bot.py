@@ -1,5 +1,7 @@
 import tweepy
 import os
+import markovify
+import threading
 
 # api keys exported in virtualenv
 A_TOKEN= os.environ['A_TOKEN']
@@ -12,10 +14,10 @@ auth.set_access_token(A_TOKEN, A_SECRET)
 
 api = tweepy.API(auth) 
 
-def do_tweet():
-    with open('topkek.txt') as f:
-        for line in f:
-            twt_txt = '[icybot] https://github.com/icyphox/icybot\n --- \n' + line 
-            print(twt_txt)
+with open('lotr.txt') as f:
+    text = f.read()
 
-do_tweet()
+text_model = markovify.Text(text)
+
+while True:
+    if 
