@@ -1,7 +1,7 @@
 import tweepy
 import os
 import markovify
-import threading
+import time
 
 # api keys exported in virtualenv
 A_TOKEN= os.environ['A_TOKEN']
@@ -19,5 +19,13 @@ with open('lotr.txt') as f:
 
 text_model = markovify.Text(text)
 
-while True:
-    if 
+
+def construct_twt():
+    while True:
+        markov_text = text_model.make_short_sentence(140)
+        if '`' or '"' not in text_model:
+            twt_txt = '[icybot] https://github.com/icyphox/icybot \n' + markov_text
+            print(twt_txt)
+            time.sleep(5)
+
+construct_twt()
