@@ -1,2 +1,4 @@
 # icybot
-the retarded twitter bot.
+a Twitter bot that generates Markov chains from the Lord of The Rings text file and tweets it.
+
+
