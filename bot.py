@@ -21,11 +21,8 @@ text_model = markovify.Text(text)
 
 
 def construct_twt():
-    while True:
         markov_text = text_model.make_short_sentence(140)
         if '`' or '"' not in text_model:
             twt_txt = '[icybot] https://github.com/icyphox/icybot \n' + markov_text
-            print(twt_txt)
-            time.sleep(5)
+        return twt_txt
 
-construct_twt()
