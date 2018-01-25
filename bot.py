@@ -23,7 +23,7 @@ def gen_textmodel():
 def construct_twt(text_model):
     markov_text = text_model.make_short_sentence(140)
     if '`' or '"' not in text_model:
-        twt_txt = '[icybot] https://github.com/icyphox/icybot \n' + markov_text
+        twt_txt = '[icybot]\n'  + markov_text
     return twt_txt
 
 def do_tweet(text):
