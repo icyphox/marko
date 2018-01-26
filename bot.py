@@ -55,7 +55,7 @@ def construct_twt(text_model):
     else:
         print('\033[33m' + '[+] Constructing your tweet.')
         if '`' or '"' not in text_model:
-            twt_txt = '[Marko - github(dot)com/icyphox/Marko]\n'  + markov_text
+            twt_txt = '[Marko]\n'  + markov_text
         return twt_txt
 
 # tweets it
