@@ -4,6 +4,8 @@ import markovify
 import time
 import sys
 import argparse
+import urllib.request
+from inscriptis import get_text
 
 # api keys exported in virtualenv
 A_TOKEN= os.environ['A_TOKEN']
@@ -18,7 +20,10 @@ api = tweepy.API(auth)
 
 # get file path from args
 parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
-parser.add_argument('-f', help='path to text model')
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument('-f', '--file', help='path to text model (.txt)')
+group.add_argument('-u', '--url', help='urlto generate a model from')
+
 if len(sys.argv)==1:
     parser.print_help()
     sys.exit(1)
