@@ -1,5 +1,4 @@
-import tweepy, os, markovify, time, sys, argparse
-import urllib.request
+import tweepy, os, markovify, time, sys, argparse, requests
 from inscriptis import get_text
 
 if os.path.isfile('consumer.py'):
@@ -36,11 +35,8 @@ def gen_textmodel():
     elif args.url:
         url = args.url
         print('\033[33m' + '[+] Parsing specified URL.')
-        user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
-        headers={'User-Agent':user_agent,}
-        request = urllib.request.Request(url,None,headers)
-        html = urllib.request.urlopen(request).read().decode('utf-8')
-        text = get_text(html)
+        r = requests.get(url)
+        text = get_text(r.text)
     model = markovify.Text(text)
     print('\033[33m' + '[+] Generating a model.')
     return model
