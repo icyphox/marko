@@ -2,6 +2,8 @@ import tweepy
 import os
 import markovify
 import time
+import sys
+import argparse
 
 # api keys exported in virtualenv
 A_TOKEN= os.environ['A_TOKEN']
@@ -14,8 +16,13 @@ auth.set_access_token(A_TOKEN, A_SECRET)
 
 api = tweepy.API(auth) 
 
+# get file path from args
+parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
+parser.add_argument('-f', help='path to text model')
+args = parser.parse_args()
+
 def gen_textmodel():
-    with open('lotr.txt') as f:
+    with open(args.f) as f:
         text = f.read()
     model = markovify.Text(text)
     return model
