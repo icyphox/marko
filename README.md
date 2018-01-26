@@ -1,10 +1,10 @@
 # icybot
 A Twitter bot that generates Markov chains and tweets them.
 
-## Requirements
+### Requirements
 A Twitter API key. I don't know how else at the moment.
 
-## Usage
+### Usage
 
 	usage: bot.py [-h] [-f FILE] [-u URL]
 
