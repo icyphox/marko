@@ -20,9 +20,9 @@ api = tweepy.API(auth)
 
 # get file path from args
 parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument('-f', '--file', help='path to text model (.txt)')
-group.add_argument('-u', '--url', help='urlto generate a model from')
+#group = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument('-f', '--file', help='path to text model (.txt)')
+parser.add_argument('-u', '--url', help='urlto generate a model from')
 
 if len(sys.argv)==1:
     parser.print_help()
@@ -30,8 +30,13 @@ if len(sys.argv)==1:
 args = parser.parse_args()
 
 def gen_textmodel():
-    with open(args.f) as f:
-        text = f.read()
+    if args.file:
+        with open(args.f) as f:
+            text = f.read()
+    elif args.url:
+        url = args.url
+        html = urllib.request.urlopen(url).read().decode('utf-8')
+        text = get_text(html)
     model = markovify.Text(text)
     return model
 
