@@ -54,7 +54,7 @@ def construct_twt(text_model):
 
 def do_tweet(text):
     api.update_status(text)
-    print('[!] Tweet sent.')
+    print('[*] Tweet sent.')
 
 def main():
     model = gen_textmodel()
