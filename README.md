@@ -9,7 +9,7 @@ If you want to run this under your own account, follow these steps:
 - export them as shell variables `A_TOKEN`, `A_SECRET`, `C_KEY` and `C_SECRET` respectively
 - finally
 
-	$ pip install -r requirements.txt
+```$ pip install -r requirements.txt```
 
 
 ### Usage
