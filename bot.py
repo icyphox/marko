@@ -23,6 +23,7 @@ if len(sys.argv)==1:
     sys.exit(1)
 args = parser.parse_args()
 
+# generates text model from either a text file or URL
 def gen_textmodel():
     if args.file:
         with open(args.f) as f:
@@ -40,6 +41,7 @@ def gen_textmodel():
     print('[+] Generating a model.')
     return model
 
+# marokvify's the model and generates txt for a tweet
 def construct_twt(text_model):
     print('[+] Attempting to generate a Markov chain.')
     markov_text = text_model.make_short_sentence(140)
@@ -52,6 +54,7 @@ def construct_twt(text_model):
             twt_txt = '[icybot]\n'  + markov_text
         return twt_txt
 
+# tweets it
 def do_tweet(text):
     api.update_status(text)
     print('[*] Tweet sent.')
@@ -63,5 +66,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-
