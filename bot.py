@@ -1,5 +1,9 @@
 import tweepy, os, markovify, time, sys, argparse, requests
 from inscriptis import get_text
+from colorama import Fore, init
+
+# colorama autoreset
+init(autoreset=True)
 
 if os.path.isfile('consumer.py'):
     import consumer
@@ -29,27 +33,27 @@ args = parser.parse_args()
 def gen_textmodel():
     if args.file:
         with open(args.f) as f:
-            print('\033[33m' + '[+] Parsing text file.') 
+            print(Fore.GREEN + '[+] Parsing text file.') 
             text = f.read()
 
     elif args.url:
         url = args.url
-        print('\033[33m' + '[+] Parsing specified URL.')
+        print(Fore.GREEN + '[+] Parsing specified URL.')
         r = requests.get(url)
         text = get_text(r.text)
     model = markovify.Text(text)
-    print('\033[33m' + '[+] Generating a model.')
+    print(Fore.GREEN + '[+] Generating a model.')
     return model
 
 # marokvify's the model and generates txt for a tweet
 def construct_twt(text_model):
-    print('\033[33m' + '[+] Attempting to generate a Markov chain.')
+    print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
     markov_text = text_model.make_short_sentence(140)
     if markov_text == None:
-        print('\033[91m' + '[!] Failed to generate a Markov chain. Exiting.')
+        print(Fore.RED + '[!] Failed to generate a Markov chain. Exiting.')
         sys.exit(1)
     else:
-        print('\033[33m' + '[+] Constructing your tweet.')
+        print(Fore.GREEN + '[+] Constructing your tweet.')
         if '`' or '"' not in text_model:
             twt_txt = '[Marko]\n'  + markov_text
         return twt_txt
@@ -57,7 +61,7 @@ def construct_twt(text_model):
 # tweets it
 def do_tweet(text):
     tweet = api.update_status(text)
-    print('\033[36m' + '[*] Tweet can be found at https://twitter.com/' + api.me().screen_name  + '/status/' + tweet.id_str )
+    print(Fore.CYAN + '[*] Tweet can be found at https://twitter.com/' + api.me().screen_name  + '/status/' + tweet.id_str )
     
 def main():
     model = gen_textmodel()
