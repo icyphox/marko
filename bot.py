@@ -27,7 +27,7 @@ args = parser.parse_args()
 def gen_textmodel():
     if args.file:
         with open(args.f) as f:
-            print('[+] Parsing text file.')
+            print('\033[33m' + '[+] Parsing text file.')
             text = f.read()
     elif args.url:
         url = args.url
@@ -38,18 +38,18 @@ def gen_textmodel():
         html = urllib.request.urlopen(request).read().decode('utf-8')
         text = get_text(html)
     model = markovify.Text(text)
-    print('[+] Generating a model.')
+    print('\033[33m' + '[+] Generating a model.')
     return model
 
 # marokvify's the model and generates txt for a tweet
 def construct_twt(text_model):
-    print('[+] Attempting to generate a Markov chain.')
+    print('\033[33m' + '[+] Attempting to generate a Markov chain.')
     markov_text = text_model.make_short_sentence(140)
     if markov_text == None:
-        print('[!] Failed to generate a Markov chain. Exiting.')
+        print('\033[91m' + '[!] Failed to generate a Markov chain. Exiting.')
         sys.exit(1)
     else:
-        print('[+] Constructing your tweet.')
+        print('\033[33m' + '[+] Constructing your tweet.')
         if '`' or '"' not in text_model:
             twt_txt = '[icybot]\n'  + markov_text
         return twt_txt
