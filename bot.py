@@ -19,6 +19,9 @@ api = tweepy.API(auth)
 # get file path from args
 parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
 parser.add_argument('-f', help='path to text model')
+if len(sys.argv)==1:
+    parser.print_help()
+    sys.exit(1)
 args = parser.parse_args()
 
 def gen_textmodel():
