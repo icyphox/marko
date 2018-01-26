@@ -31,7 +31,7 @@ def gen_textmodel():
             text = f.read()
     elif args.url:
         url = args.url
-        print('[+] Parsing specified URL.')
+        print('\033[33m' + '[+] Parsing specified URL.')
         user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
         headers={'User-Agent':user_agent,}
         request = urllib.request.Request(url,None,headers)
@@ -57,7 +57,7 @@ def construct_twt(text_model):
 # tweets it
 def do_tweet(text):
     api.update_status(text)
-    print('[*] Tweet sent.')
+    print('\033[36m' + '[*] Tweet sent.')
 
 def main():
     model = gen_textmodel()
