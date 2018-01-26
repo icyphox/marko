@@ -10,7 +10,7 @@ If you want to run this under your own account, follow these steps:
 
  **OR**
 
-- create a `consumer.py` in thesame directory with the contents like so:
+- create a `consumer.py` in the same directory with the contents like so:
 ```python
 # you know what goes where
 

@@ -22,7 +22,7 @@ api = tweepy.API(auth)
 # get file path from args
 parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
 parser.add_argument('-f', '--file', help='path to text model (.txt)')
-parser.add_argument('-u', '--url', help='urlto generate a model from')
+parser.add_argument('-u', '--url', help='url to generate a model from')
 
 if len(sys.argv)==1:
     parser.print_help()
