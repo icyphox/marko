@@ -2,7 +2,7 @@ import tweepy, os, markovify, time, sys, argparse
 import urllib.request
 from inscriptis import get_text
 
-if open('consumer.py'):
+if os.path.isfile('consumer.py'):
     import consumer
 else:
 # api keys exported in virtualenv
@@ -30,8 +30,9 @@ args = parser.parse_args()
 def gen_textmodel():
     if args.file:
         with open(args.f) as f:
-            print('\033[33m' + '[+] Parsing text file.')
+            print('\033[33m' + '[+] Parsing text file.') 
             text = f.read()
+
     elif args.url:
         url = args.url
         print('\033[33m' + '[+] Parsing specified URL.')
@@ -59,9 +60,9 @@ def construct_twt(text_model):
 
 # tweets it
 def do_tweet(text):
-    api.update_status(text)
-    print('\033[36m' + '[*] Tweet sent.')
-
+    tweet = api.update_status(text)
+    print('\033[36m' + '[*] Tweet can be found at https://twitter.com/' + api.me().screen_name  + '/status/' + tweet.id_str )
+    
 def main():
     model = gen_textmodel()
     tweet_text = construct_twt(model)
