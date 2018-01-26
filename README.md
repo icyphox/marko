@@ -1,4 +1,4 @@
-# icybot
+# Marko
 A Twitter bot that generates Markov chains and tweets them.
 
 ### Installation
