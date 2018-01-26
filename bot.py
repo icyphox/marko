@@ -1,9 +1,4 @@
-import tweepy
-import os
-import markovify
-import time
-import sys
-import argparse
+import tweepy, os, markovify, time, sys, argparse
 import urllib.request
 from inscriptis import get_text
 
