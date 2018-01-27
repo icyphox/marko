@@ -2,6 +2,8 @@ import markovify, requests, sys
 from inscriptis import get_text
 from colorama import Fore, init
 
+init(autoreset=True)
+
 def gen_textmodel(f=None, u=None):
     if f:
         with open(f) as f:
@@ -12,14 +14,14 @@ def gen_textmodel(f=None, u=None):
         print(Fore.GREEN + '[+] Parsing specified URL.')
         r = requests.get(u)
         text = get_text(r.text)
-    model = markovify.Text(text)
     print(Fore.GREEN + '[+] Generating a model.')
-    return model
+    model = markovify.Text(text)
+    print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
+    markov_text = model.make_short_sentence(140)
+    return markov_text
 
 # marokvify's the model and generates txt for a tweet
-def construct_twt(text_model, handle=None):
-    print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
-    markov_text = text_model.make_short_sentence(140)
+def construct_twt(markov_text, handle=None):
     if markov_text == None:
         print(Fore.RED + '[!] Failed to generate a Markov chain. Exiting.')
         sys.exit(1)
@@ -30,6 +32,6 @@ def construct_twt(text_model, handle=None):
         else:
             print(Fore.GREEN + '[+] Constructing your tweet.')
             twt_txt = '[Marko]\n' + markov_text
-
         return twt_txt
+
 
