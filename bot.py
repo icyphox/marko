@@ -1,5 +1,5 @@
 import tweepy, sys, argparse
-from modules import auth, markov
+from modules import auth, markov, tweet
 from colorama import Fore, init
 
 # colorama autoreset
