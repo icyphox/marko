@@ -4,7 +4,7 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-def gen_textmodel(f=None, u=None):
+def gen_markov(f=None, u=None):
     if f:
         with open(f) as f:
             print(Fore.GREEN + '[+] Parsing text file.') 
