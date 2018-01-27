@@ -11,8 +11,9 @@ api = auth.tweepy_auth()
 
 # get file path from args
 parser = argparse.ArgumentParser(description='A Twitter bot that tweets Markov chains.')
-parser.add_argument('-f', '--file', help='path to text model (.txt)')
-parser.add_argument('-u', '--url', help='url to generate a model from')
+parser.add_argument('--file', help='path to text model (.txt)')
+parser.add_argument('--url', help='url to generate a model from')
+parser.add_argument('--handle', help='twitter handle of user to tweet at')
 
 if len(sys.argv)==1:
     parser.print_help()
@@ -43,9 +44,13 @@ def construct_twt(text_model):
         print(Fore.RED + '[!] Failed to generate a Markov chain. Exiting.')
         sys.exit(1)
     else:
-        print(Fore.GREEN + '[+] Constructing your tweet.')
-        if '`' or '"' not in text_model:
-            twt_txt = '[Marko]\n'  + markov_text
+        if args.handle:
+            print(Fore.GREEN + '[+] Constructing your tweet, and tweeting at ' + args.handle)
+            twt_txt = '[Marko]\n'+ args.handle + ' ' + markov_text
+        else:
+            print(Fore.GREEN + '[+] Constructing your tweet.')
+            twt_txt = '[Marko]\n' +markov_text
+
         return twt_txt
 
 # tweets it
