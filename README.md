@@ -1,5 +1,5 @@
 # Marko
-A Twitter bot that generates Markov chains and tweets them.
+A Twitter bot that sounds smart.
 
 ### Installation
 If you want to run this under your own account, follow these steps:
