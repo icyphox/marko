@@ -25,6 +25,9 @@ def main():
         markov_text = marko.gen_markov(f=args.file)
     elif args.url:
         markov_text = marko.gen_markov(u=args.url)
+#    elif args.file and args.url:
+#       print('[!] Cannot parse from two sources. Aborting.')
+# TODO fix ^
 
     if args.handle:
         tweet_text = marko.construct_twt(markov_text, args.handle)
