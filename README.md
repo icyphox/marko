@@ -26,12 +26,16 @@ C_SECRET = ''
 
 ### Usage
 
-	usage: bot.py [-h] [-f FILE] [-u URL]
+	usage: bot.py [-h] [--file FILE] [--url URL] [--handle HANDLE]
+              [--gen-from-user GEN_FROM_USER]
 
 	A Twitter bot that tweets Markov chains.
 
 	optional arguments:
-	 -h, --help            show this help message and exit
-	-f FILE, --file FILE  path to text model (.txt)
-	-u URL, --url URL     urlto generate a model from
+	  -h, --help            show this help message and exit
+	  --file FILE           path to text file (.txt)
+	  --url URL             url to generate a model from
+	  --handle HANDLE       twitter handle of user to tweet at
+	  --gen-from-user GEN_FROM_USER
+                        generate text model from user's timeline
 
