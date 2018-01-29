@@ -29,16 +29,16 @@ def main():
 #       print('[!] Cannot parse from two sources. Aborting.')
 # TODO fix ^
 
+    if args.gen_from_user:
+        json = tweet.get_history(args.gen_from_user)
+        print() 
+
     if args.handle:
         tweet_text = marko.construct_twt(markov_text, args.handle)
     else:
         tweet_text = marko.construct_twt(markov_text)
     
-    if args.gen_from_user:
-        json = tweet.get_history(args.gen_from_user)
-        print(json) 
-
-    tweet.do_tweet(tweet_text) 
+        tweet.do_tweet(tweet_text) 
 
 if __name__ == "__main__":
     main()
