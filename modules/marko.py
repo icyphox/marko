@@ -34,4 +34,7 @@ def construct_twt(markov_text, handle=None):
             twt_txt = '[Marko]\n' + markov_text
         return twt_txt
 
+def gen_from_hist(jsonfile):
+    text_model = markovify.Text.from_json(jsonfilea)
+    text_model.make_short_sentence(140)
 
