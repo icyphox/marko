@@ -1,5 +1,5 @@
 # Marko
-A Twitter bot that sounds smart.
+A Twitter bot that tries to sound smart.
 
 ### Installation
 If you want to run this under your own account, follow these steps:
