@@ -4,7 +4,7 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-def gen_markov(f=None, u=None, handle=None):
+def gen_markov(f=None, u=None):
     if f:
         with open(f) as f:
             print(Fore.GREEN + '[+] Parsing text file.') 
@@ -20,8 +20,13 @@ def gen_markov(f=None, u=None, handle=None):
     markov_text = model.make_short_sentence(140)
     return markov_text
 
+def gen_from_hist(filepath):
+    with open(filepath) as f:
+        text_model = markovify.Text(f, retain_original=False)
+    print(text_model.make_sentence())
+
 # marokvify's the model and generates txt for a tweet
-def construct_twt(markov_text):
+def construct_twt(markov_text, handle=None):
     if markov_text == None:
         print(Fore.RED + '[!] Failed to generate a Markov chain. Exiting.')
         sys.exit(1)
