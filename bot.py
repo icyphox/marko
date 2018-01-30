@@ -21,24 +21,25 @@ if len(sys.argv)==1:
 args = parser.parse_args()
     
 def main():
-    if args.file:
-        markov_text = marko.gen_markov(f=args.file)
-    elif args.url:
-        markov_text = marko.gen_markov(u=args.url)
+    if args.handle:
+        if args.file:
+            markov_text = marko.gen_markov(f=args.file, args.handle)
+        elif args.url:
+            markov_text = marko.gen_markov(u=args.url, args.handle)
+    else:
+        if args.file:
+            markov_text = marko.gen_markov(f=args.file)
+        elif args.url:
+            markov_text = marko.gen_markov(u=args.url)
 #    elif args.file and args.url:
 #       print('[!] Cannot parse from two sources. Aborting.')
 # TODO fix ^
 
-    if args.gen_from_user:
-        json = tweet.get_history(args.gen_from_user)
-        print() 
+    elif args.gen_from_user:
+        
 
- #   if args.handle:
- #       tweet_text = marko.construct_twt(markov_text, args.handle)
- #   else:
- #       tweet_text = marko.construct_twt(markov_text)
-#
-#        tweet.do_tweet(tweet_text) 
+
+    tweet.do_tweet(tweet_text) 
 
 if __name__ == "__main__":
     main()
