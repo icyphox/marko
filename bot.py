@@ -33,12 +33,12 @@ def main():
         json = tweet.get_history(args.gen_from_user)
         print() 
 
-    if args.handle:
-        tweet_text = marko.construct_twt(markov_text, args.handle)
-    else:
-        tweet_text = marko.construct_twt(markov_text)
-    
-        tweet.do_tweet(tweet_text) 
+ #   if args.handle:
+ #       tweet_text = marko.construct_twt(markov_text, args.handle)
+ #   else:
+ #       tweet_text = marko.construct_twt(markov_text)
+#
+#        tweet.do_tweet(tweet_text) 
 
 if __name__ == "__main__":
     main()
