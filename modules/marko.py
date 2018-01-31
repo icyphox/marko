@@ -20,11 +20,6 @@ def gen_markov(f=None, u=None):
     markov_text = model.make_short_sentence(140)
     return markov_text
 
-def gen_from_hist(filepath):
-    with open(filepath) as f:
-        text_model = markovify.Text(f, retain_original=False)
-    print(text_model.make_sentence())
-
 # marokvify's the model and generates txt for a tweet
 def construct_twt(markov_text, handle=None):
     if markov_text == None:
