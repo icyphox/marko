@@ -24,22 +24,22 @@ def main():
     if args.handle:
         if args.file:
             markov_text = marko.gen_markov(f=args.file)
-            tweet_text = tweet.construct_twt(markov_text, handle=args.handle)
+            tweet_text = marko.construct_twt(markov_text, handle=args.handle)
         elif args.url:
             markov_text = marko.gen_markov(u=args.url)
-            tweet_text = tweet.construct_twt(markov_text, handle=args.handle)
+            tweet_text = marko.construct_twt(markov_text, handle=args.handle)
     
     elif args.gen_from_user:
         filepath = tweet.get_history(args.gen_from_user)
-        markov_text = marko.gen_from_hist(filepath)
+        markov_text = marko.gen_markov(f=filepath)
 
     else:
         if args.file:
             markov_text = marko.gen_markov(f=args.file)
-            tweet_text = tweet.construct_twt(markov_text)
+            tweet_text = marko.construct_twt(markov_text)
         elif args.url:
             markov_text = marko.gen_markov(u=args.url)
-            tweet_text = tweet.construct_twt(markov_text)
+            tweet_text = marko.construct_twt(markov_text)
 
 #    elif args.file and args.url:
 #       print('[!] Cannot parse from two sources. Aborting.')
