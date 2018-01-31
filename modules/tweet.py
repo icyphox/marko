@@ -16,17 +16,17 @@ def get_history(user):
     filename = user[1:] + '.txt'
     all_tweets = []
     path = 'timelines/' + filename
+
     new_tweets = api.user_timeline(screen_name=user,count=200)
     all_tweets.extend(new_tweets)
     oldest = all_tweets[-1].id - 1
     while len(new_tweets) > 0:
-        print(Fore.GREEN + '[+] Getting tweets before %s' % (oldest), end='\r')
         new_tweets = api.user_timeline(screen_name=user,count=200,max_id=oldest)
         all_tweets.extend(new_tweets)
         oldest = all_tweets[-1].id - 1
         print(Fore.GREEN + '[+] %s tweets downloaded so far' % (len(all_tweets)), end='\r')
 
-    out_tweets = [tweet.text for tweet in all_tweets]
+    out_tweets = [tweet.text.encode('utf-8') for tweet in all_tweets]
     
     if not os.path.exists('timelines'):
         os.makedirs('timelines')
