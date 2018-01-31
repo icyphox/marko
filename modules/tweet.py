@@ -33,6 +33,6 @@ def get_history(user):
 
     with open(path, 'w') as f:
         for tweet in out_tweets:
-            f.write(tweet)
+            f.write(tweet.decode('utf-8'))
 
     return path

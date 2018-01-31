@@ -32,6 +32,7 @@ def main():
     elif args.gen_from_user:
         filepath = tweet.get_history(args.gen_from_user)
         markov_text = marko.gen_markov(f=filepath)
+        tweet_text = marko.construct_twt(markov_text)
 
     else:
         if args.file:
