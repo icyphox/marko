@@ -7,9 +7,11 @@ inscriptis==0.0.3.2
 lxml==4.1.1
 markovify==0.7.1
 oauthlib==2.0.6
+python-utils==2.2.0
 requests==2.18.4
 requests-oauthlib==0.8.0
 six==1.11.0
+tqdm==4.19.5
 tweepy==3.5.0
 Unidecode==1.0.22
 urllib3==1.22
