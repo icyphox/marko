@@ -15,7 +15,7 @@ parser.add_argument('--url', help='url to generate a model from')
 parser.add_argument('--handle', help='twitter handle of user to tweet at')
 parser.add_argument('--gen-from-user', help='generate text model from user\'s timeline')
 
-if len(sys.argv)==1:
+if len(sys.argv) == 1:
     parser.print_help()
     sys.exit(1)
 args = parser.parse_args()

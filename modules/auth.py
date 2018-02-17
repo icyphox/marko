@@ -18,4 +18,3 @@ def tweepy_auth():
 
     api = tweepy.API(auth) 
     return api
-
