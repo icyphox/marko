@@ -1,4 +1,4 @@
-import tweepy, os.path, sys, json
+import tweepy, os.path, sys, json, signal
 from colorama import Fore, init
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
@@ -24,10 +24,6 @@ def progress(count, total, status=''):
 
 def get_history(user):
 
-    filename = user[1:] + '.txt'
-    all_tweets = []
-    path = 'timelines/' + filename
-
     new_tweets = api.user_timeline(screen_name=user,count=200)
     all_tweets.extend(new_tweets)
     oldest = all_tweets[-1].id - 1
@@ -36,16 +32,8 @@ def get_history(user):
         new_tweets = api.user_timeline(screen_name=user,count=200,max_id=oldest)
         all_tweets.extend(new_tweets)
         oldest = all_tweets[-1].id - 1
-        progress(i, len(all_tweets, '[+] Downloading tweets.'))
+        progress(i, len(all_tweets, '[+] Fetching tweets.'))
         i -= 1
 
     out_tweets = [tweet.text.encode('utf-8') for tweet in all_tweets]
-    
-    if not os.path.exists('timelines'):
-        os.makedirs('timelines')
-
-    with open(path, 'w') as f:
-        for tweet in out_tweets:
-            f.write(tweet.decode('utf-8'))
-
-    return path
+     
