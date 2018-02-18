@@ -1,2 +1,4 @@
 .env
-timelines/
+__pycache__/
+consumer.py
+
