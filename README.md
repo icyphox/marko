@@ -1,4 +1,5 @@
-# Marko
+<center><img src='https://xix.ph0x.me/marko.png'></center>
+
 A Twitter bot that tries to sound smart.
 
 ### Installation
