@@ -1,4 +1,5 @@
 import tweepy, os.path, sys, json, signal
+from tqdm import tqdm
 from colorama import Fore, init
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
@@ -23,17 +24,15 @@ def progress(count, total, status=''):
     sys.stdout.flush()
 
 def get_history(user):
-
-    new_tweets = api.user_timeline(screen_name=user,count=200)
-    all_tweets.extend(new_tweets)
-    oldest = all_tweets[-1].id - 1
-    i = len(new_tweets)
-    while len(new_tweets) > 0:
-        new_tweets = api.user_timeline(screen_name=user,count=200,max_id=oldest)
-        all_tweets.extend(new_tweets)
-        oldest = all_tweets[-1].id - 1
-        progress(i, len(all_tweets, '[+] Fetching tweets.'))
-        i -= 1
-
-    out_tweets = [tweet.text.encode('utf-8') for tweet in all_tweets]
-     
+    all_tweets = []
+    filepath = '%s_timeline' % (user)
+   
+    try:
+        progress = 
+        for status in tqdm(tweepy.Cursor(api.user_timeline, screen_name=user).items()):
+             all_tweets.append(status)            
+    except KeyboardInterrupt:
+        out_tweets = [tweet.text.encode('utf-8') for tweet in all_tweets]
+        with open(filepath, 'w') as f:
+            f.write(str(out_tweets))
+        return filepath
