@@ -1,7 +1,6 @@
 <center><img src='https://xix.ph0x.me/marko.png'></center>
 
 # A Twitter bot that tries to sound smart. 
-[![Coverage Status](https://coveralls.io/repos/github/icyphox/Marko/badge.svg?branch=master)](https://coveralls.io/github/icyphox/Marko?branch=master)
 [![Build Status](https://travis-ci.org/icyphox/Marko.svg?branch=master)](https://travis-ci.org/icyphox/Marko)
 
 
