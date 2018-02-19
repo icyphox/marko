@@ -14,11 +14,16 @@ def gen_markov(f=None, u=None):
         print(Fore.GREEN + '[+] Parsing specified URL.')
         r = requests.get(u)
         text = get_text(r.text)
-    print(Fore.GREEN + '[+] Generating a model.')
-    model = markovify.Text(text)
-    print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
-    markov_text = model.make_short_sentence(140)
-    return markov_text
+
+    try: 
+        print(Fore.GREEN + '[+] Generating a model.')
+        model = markovify.Text(text)
+        print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
+        markov_text = model.make_short_sentence(140)
+        return markov_text
+
+    except UnboundLocalError:
+        print(Fore.RED + '[!] Fatal error. Aborting process.')
 
 # marokvify's the model and generates txt for a tweet
 def construct_twt(markov_text, handle=None):
