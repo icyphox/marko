@@ -1,5 +1,5 @@
 <center><img src='https://xix.ph0x.me/marko.png'></center>
-
+[![Coverage Status](https://coveralls.io/repos/github/icyphox/Marko/badge.svg?branch=master)](https://coveralls.io/github/icyphox/Marko?branch=master)
 A Twitter bot that tries to sound smart.
 
 ### Installation
