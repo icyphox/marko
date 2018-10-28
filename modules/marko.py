@@ -19,7 +19,7 @@ def gen_markov(f=None, u=None):
         print(Fore.GREEN + '[+] Generating a model.')
         model = markovify.Text(text)
         print(Fore.GREEN + '[+] Attempting to generate a Markov chain.')
-        markov_text = model.make_short_sentence(140)
+        markov_text = model.make_short_sentence(280)
         return markov_text
 
     except UnboundLocalError:
